@@ -15,6 +15,13 @@ namespace Happy.WebApi.Extensions
                 {
                     var connectionString = GetConnectionString(configuration);
                     opt.UseNpgsql(connectionString);
+                })
+                .AddCors(opt =>
+                {
+                    opt.AddPolicy("CorsPolicy", policy =>
+                    {
+                        policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4000");
+                    });
                 });
         }
 

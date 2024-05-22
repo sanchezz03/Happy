@@ -1,13 +1,19 @@
 ﻿using Happy.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Happy.Infrastructure.Contexts;
 
-public class HappyDbContext : DbContext
+public class AppDbContext : IdentityDbContext<User>
 {
+    #region Entities DbSet
+
+    public DbSet<User> Users { get; set; }
     public DbSet<Week> Weeks { get; set; }
 
-    public HappyDbContext(DbContextOptions options)
+    #endregion
+
+    public AppDbContext(DbContextOptions options)
         : base(options)
     {
 
@@ -20,6 +26,7 @@ public class HappyDbContext : DbContext
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
     }
 
     #endregion

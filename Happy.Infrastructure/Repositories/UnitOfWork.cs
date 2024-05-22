@@ -5,10 +5,10 @@ namespace Happy.Infrastructure.Repositories;
 
 public class UnitOfWork : IUnitOfWork
 {
-    private readonly HappyDbContext _context;
+    private readonly AppDbContext _context;
     private Dictionary<Type, object> _repositories;
 
-    public UnitOfWork(HappyDbContext context)
+    public UnitOfWork(AppDbContext context)
     {
         _context = context;
         _repositories = new Dictionary<Type, object>();

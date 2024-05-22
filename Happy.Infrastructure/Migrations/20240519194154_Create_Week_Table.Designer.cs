@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Happy.Infrastructure.Migrations
 {
-    [DbContext(typeof(HappyDbContext))]
+    [DbContext(typeof(AppDbContext))]
     [Migration("20240519194154_Create_Week_Table")]
     partial class Create_Week_Table
     {

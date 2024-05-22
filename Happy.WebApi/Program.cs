@@ -1,23 +1,34 @@
+using Happy.Common.Extensions;
 using Happy.WebApi.Extensions;
+using Happy.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Host
+    .AddConfiguration();
 
-builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services
+    .AddAuthorization()
+    .AddControllers().Services
+    .AddDatabase()
+    .AddIdentityServices()
+    .AddEndpointsApiExplorer()
+    .AddMvc().Services
+    .AddSwaggerGen()
+    .AddApiVersion()
+    .AddCORS();
+
+//builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
-app.UseCors("CorsPolicy");
-
+app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
+app.UseCors("CorsPolicy");
 
 app.Run();

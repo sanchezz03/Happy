@@ -1,6 +1,7 @@
 using Happy.Common.Extensions;
 using Happy.WebApi.Extensions;
 using Happy.Infrastructure.Extensions;
+using Happy.Service.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,14 +12,14 @@ builder.Services
     .AddAuthorization()
     .AddControllers().Services
     .AddDatabase()
+    .AddDataProviders()
+    .AddMapping()
     .AddIdentityServices()
     .AddEndpointsApiExplorer()
     .AddMvc().Services
     .AddSwaggerGen()
     .AddApiVersion()
     .AddCORS();
-
-//builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
 var app = builder.Build();
 

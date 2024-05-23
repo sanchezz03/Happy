@@ -13,11 +13,7 @@ public class AppDbContext : IdentityDbContext<User>
 
     #endregion
 
-    public AppDbContext(DbContextOptions options)
-        : base(options)
-    {
-
-    }
+    public AppDbContext(DbContextOptions options) : base(options) { }
 
     #region Protected methods
 
@@ -27,6 +23,7 @@ public class AppDbContext : IdentityDbContext<User>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
     }
 
     #endregion

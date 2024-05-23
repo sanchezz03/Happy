@@ -11,5 +11,5 @@ public static class Constants
     /// <summary>
     /// DATABASE
     /// </summary>
-    public const string MIGRATION_PROJECT_NAME = "Happy.Migrations";
+    public const string MIGRATION_PROJECT_NAME = "Happy.Infrastructure";
 }

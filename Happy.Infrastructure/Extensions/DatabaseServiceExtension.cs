@@ -1,7 +1,10 @@
 ﻿using Happy.Common;
 using Happy.Common.ConfigurationModels;
 using Happy.Common.ConfigurationOptions;
+using Happy.Common.Helpers;
+using Happy.Domain.Repositories;
 using Happy.Infrastructure.Contexts;
+using Happy.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -31,7 +34,17 @@ public static class DatabaseServiceExtension
             options.UseNpgsql(configuration.Value.ConnectionString, b => b.MigrationsAssembly(Constants.MIGRATION_PROJECT_NAME));
         });
 
+        SetDIRepositories();
+
         return services;
+
+        void SetDIRepositories()
+        {
+            services.AddScoped(typeof(IRelationalRepository<>), typeof(BaseRelationalRepository<>));
+
+            var relationalRepositiries = TypesHelper.GetDerivedTypesFromAssembly(typeof(BaseRelationalRepository<>));
+            relationalRepositiries.ToList().ForEach(type => services.AddScoped(type));
+        }
     }
 
     #endregion

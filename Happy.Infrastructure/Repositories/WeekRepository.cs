@@ -9,7 +9,7 @@ public class WeekRepository : BaseRelationalRepository<Week>
     public WeekRepository(AppDbContext appDbContext)
         : base(appDbContext) { }
 
-    public async Task<Week> GetByWeekNumber(int weekNumber)
+    public async Task<Week> GetByWeekNumberAsync(int weekNumber)
     {
         var specification = new WeekByNumberSpecification(weekNumber);
         var entities = await FindBySpecificationAsync(specification);

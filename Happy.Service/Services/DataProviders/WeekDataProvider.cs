@@ -18,9 +18,9 @@ public class WeekDataProvider : IWeekDataProvider
 
     #region Public methods
 
-    public async Task<WeekDto> GetByWeekNumber(int weekNumber)
+    public async Task<WeekDto> GetByWeekNumberAsync(int weekNumber)
     {
-        var entity = await _weekRepository.GetByWeekNumber(weekNumber);
+        var entity = await _weekRepository.GetByWeekNumberAsync(weekNumber);
 
         return _mapper.Map<WeekDto>(entity);
     }

@@ -4,5 +4,5 @@ namespace Happy.Service.Services.DataProviders.Interfaces;
 
 public interface IWeekDataProvider
 { 
-    Task<WeekDto> GetByWeekNumber(int weekNumber);  
+    Task<WeekDto> GetByWeekNumberAsync(int weekNumber);  
 }

@@ -13,6 +13,7 @@ builder.Services
     .AddControllers().Services
     .AddDatabase()
     .AddDataProviders()
+    .AddCoreServices()
     .AddMapping()
     .AddIdentityServices()
     .AddEndpointsApiExplorer()

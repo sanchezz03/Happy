@@ -9,6 +9,7 @@ public static class DataProvidersServiceExtension
     public static IServiceCollection AddDataProviders(this IServiceCollection services)
     {
         return services
+            .AddScoped<IExerciseDataProvider, ExerciseDataProvider>()
             .AddScoped<IWeekDataProvider, WeekDataProvider>();
     }
 }

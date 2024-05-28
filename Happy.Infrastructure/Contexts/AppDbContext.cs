@@ -9,6 +9,7 @@ public class AppDbContext : IdentityDbContext<User>
     #region Entities DbSet
 
     public DbSet<User> Users { get; set; }
+    public DbSet<Exercise> Exercises { get; set; }
     public DbSet<Week> Weeks { get; set; }
 
     #endregion

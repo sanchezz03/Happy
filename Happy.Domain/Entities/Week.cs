@@ -6,4 +6,10 @@ public class Week : Base<long>
     public DateTime EndDate { get; set; }
     public int Year { get; set; }
     public int WeekNumber { get; set; }
+
+    #region Navigation property
+
+    public ICollection<ComplexWeek> ComplexWeeks { get; set; } = new List<ComplexWeek>();
+
+    #endregion
 }

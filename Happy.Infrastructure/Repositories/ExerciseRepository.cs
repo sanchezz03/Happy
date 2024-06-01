@@ -9,6 +9,8 @@ public class ExerciseRepository : BaseRelationalRepository<Exercise>
     public ExerciseRepository(AppDbContext appDbContext)
         : base(appDbContext) { }
 
+    #region Public methods
+
     public async Task<Exercise> GetByExerciseNameAsync(string exerciseName)
     {
         var specification = new ExerciseByNameSpecification(exerciseName);
@@ -16,4 +18,13 @@ public class ExerciseRepository : BaseRelationalRepository<Exercise>
         var exercise = entities.FirstOrDefault(e => e.Name.Equals(exerciseName));
         return exercise;
     }
+
+    public async Task<IEnumerable<Exercise>> GetListByExerciseNamesAsync(List<string> exerciseNames)
+    {
+        var specification = new ExercisesByNamesSpecification(exerciseNames);
+        var entities = await FindBySpecificationAsync(specification);
+        return entities;
+    }
+
+    #endregion
 }

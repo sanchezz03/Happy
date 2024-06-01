@@ -9,8 +9,11 @@ public class AppDbContext : IdentityDbContext<User>
     #region Entities DbSet
 
     public DbSet<User> Users { get; set; }
+    public DbSet<Complex> Complexes { get; set; }
     public DbSet<Exercise> Exercises { get; set; }
+    public DbSet<ComplexExercise> ComplexExercises { get; set; }
     public DbSet<Week> Weeks { get; set; }
+    public DbSet<ComplexWeek> ComplexWeeks { get; set; }
 
     #endregion
 

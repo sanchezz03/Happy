@@ -22,6 +22,11 @@ public class WeekDataProvider : IWeekDataProvider
     {
         var entity = await _weekRepository.GetByWeekNumberAsync(weekNumber);
 
+        if (entity == null)
+        {
+            throw new Exception($"Cannot find week by number: {weekNumber}");
+        }
+
         return _mapper.Map<WeekDto>(entity);
     }
 

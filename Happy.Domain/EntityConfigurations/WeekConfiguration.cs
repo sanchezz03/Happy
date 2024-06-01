@@ -27,5 +27,14 @@ public class WeekConfiguration : IEntityTypeConfiguration<Week>
         builder
             .Property(t => t.WeekNumber)
             .IsRequired();
+
+        #region Navigation property
+
+        builder
+            .HasMany(w => w.ComplexWeeks)
+            .WithOne(w => w.Week)
+            .HasForeignKey(w => w.WeekId);
+
+        #endregion
     }
 }

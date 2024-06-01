@@ -27,5 +27,14 @@ public class ExerciseConfiguration : IEntityTypeConfiguration<Exercise>
         builder
             .Property(e => e.NumberOfRepetitions)
             .IsRequired();
+
+        #region Navigation properties
+
+        builder
+            .HasMany(e => e.ComplexExercises)
+            .WithOne(e => e.Exercise)
+            .HasForeignKey(e => e.ExerciseId);
+
+        #endregion
     }
 }

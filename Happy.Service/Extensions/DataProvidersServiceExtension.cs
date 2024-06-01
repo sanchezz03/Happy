@@ -13,6 +13,7 @@ public static class DataProvidersServiceExtension
             .AddScoped<IComplexExerciseDataProvider, ComplexExerciseDataProvider>()
             .AddScoped<IComplexWeekDataProvider, ComplexWeekDataProvider>()
             .AddScoped<IExerciseDataProvider, ExerciseDataProvider>()
+            .AddScoped<IProgressDataProvider, ProgressDataProvider>()
             .AddScoped<IWeekDataProvider, WeekDataProvider>();
     }
 }

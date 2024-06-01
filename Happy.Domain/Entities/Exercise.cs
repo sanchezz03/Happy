@@ -11,5 +11,7 @@ public class Exercise : Base<long>
 
     public ICollection<ComplexExercise> ComplexExercises { get; set; } = new List<ComplexExercise>();
 
+    public ICollection<Progress> Progresses { get; set; } = new List<Progress>();
+
     #endregion
 }

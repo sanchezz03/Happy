@@ -14,6 +14,7 @@ public class AppDbContext : IdentityDbContext<User>
     public DbSet<ComplexExercise> ComplexExercises { get; set; }
     public DbSet<Week> Weeks { get; set; }
     public DbSet<ComplexWeek> ComplexWeeks { get; set; }
+    public DbSet<Progress> Progresses { get; set; }
 
     #endregion
 

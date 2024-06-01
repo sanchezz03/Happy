@@ -12,6 +12,7 @@ public static class CoreServiceExtension
             .AddScoped<IComplexService, ComplexService>()
             .AddScoped<IComplexExerciseService, ComplexExerciseService>()
             .AddScoped<IComplexWeekService, ComplexWeekService>()
-            .AddScoped<IExerciseService, ExerciseService>();
+            .AddScoped<IExerciseService, ExerciseService>()
+            .AddScoped<IProgressService, ProgressService>();
     }
 }

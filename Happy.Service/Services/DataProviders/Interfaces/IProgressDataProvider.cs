@@ -7,6 +7,7 @@ public interface IProgressDataProvider
 {
     Task<ProgressDto> CreateAsync(ModificationProgressDto progressDto);
     Task<IEnumerable<ProgressDto>> GetListAsync();
+    Task<IEnumerable<ProgressDto>> GetListAsync(string userId);
     Task UpdateAsync(long id, ModificationProgressDto progressDto);
     Task DeleteByIdAsync(long id);
 }

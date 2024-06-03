@@ -32,13 +32,6 @@ public class ProgressDataProvider : IProgressDataProvider
         return _mapper.Map<ProgressDto>(response);  
     }
 
-    public async Task<IEnumerable<ProgressDto>> GetListAsync()
-    {
-        var entities = await _progressRepository.GetListAsync();
-
-        return _mapper.Map<IEnumerable<ProgressDto>>(entities);
-    }
-
     public async Task<IEnumerable<ProgressDto>> GetListAsync(string userId)
     {
         var entities = await _progressRepository.GetListByUserId(userId);

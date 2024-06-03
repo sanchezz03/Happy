@@ -1,17 +1,20 @@
-﻿using Happy.Service.Dtos;
+﻿using Happy.Domain.Entities;
+using Happy.Service.Dtos;
 using Happy.Service.Dtos.Progresses;
 using Happy.Service.Services.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace Happy.WebApi.Controllers;
 
 [Route("api/v{version:apiVersion}/[controller]")]
-public class ProgressController : ControllerBase
+public class ProgressController : BaseController
 {
     private readonly IProgressService _progressService;
 
-    public ProgressController(IProgressService progressService)
+    public ProgressController(IProgressService progressService,
+        UserManager<User> userManager) : base(userManager)
     {
         _progressService = progressService;
     }
@@ -38,7 +41,8 @@ public class ProgressController : ControllerBase
     {
         try
         {
-            var exerciseDto = await _progressService.GetListAsync();
+            var user = await GetCurrentUserAsync();
+            var exerciseDto = await _progressService.GetListAsync(user.Id);
 
             return Ok(exerciseDto);
         }

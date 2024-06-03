@@ -21,9 +21,9 @@ public class ProgressService : IProgressService
         return await _progressDataProvider.CreateAsync(modificationProgressDto);
     }
 
-    public async Task<IEnumerable<ProgressDto>> GetListAsync()
+    public async Task<IEnumerable<ProgressDto>> GetListAsync(string userId)
     {
-        return await _progressDataProvider.GetListAsync();
+        return await _progressDataProvider.GetListAsync(userId);
     }
 
     public async Task UpdateAsync(long id, ModificationProgressDto modificationProgressDto)

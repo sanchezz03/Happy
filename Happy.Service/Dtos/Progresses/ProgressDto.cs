@@ -8,4 +8,5 @@ public class ProgressDto
     public int NumberOfRepetitions { get; set; }
     public DateTime Date { get; set; }
     public ERateOfPerceivedExertion? RateOfPerceivedExertion { get; set; }
+    public string ExerciseName { get; set; }
 }

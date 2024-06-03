@@ -2,6 +2,7 @@ import {RouteObject, createBrowserRouter} from "react-router-dom";
 import App from "../layout/App";
 import LoginForm from "../../features/users/LoginForm";
 import ComplexDashboard from "../../features/complexes/dashboard/ComplexDashboard";
+import ProgressDashboard from "../../features/progresses/ProgressDashboard";
 
 export const routes: RouteObject[] = [
     {
@@ -9,6 +10,7 @@ export const routes: RouteObject[] = [
         element: <App/>,
         children: [
             {path: 'complexes', element: <ComplexDashboard/> },
+            {path: 'progress', element: <ProgressDashboard/>},
             {path: 'login', element: <LoginForm/>},
         ]
     },

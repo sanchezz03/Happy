@@ -11,6 +11,7 @@ export default observer(function NavBar() {
                 <Menu.Item as={NavLink} to='/' header>
                     Happy Crossfit
                 </Menu.Item>
+                <Menu.Item as={NavLink} to='/progress' name='Progress'/>
                 <Menu.Item position='right'>
                     <Image src={user?.image || '/assets/user.png'} avatar spaced='right'/>
                     <Dropdown pointing='top left' text={user?.displayName}>

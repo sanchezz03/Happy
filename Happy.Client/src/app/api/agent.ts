@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios"
 import { User, UserFormValues } from "../models/user";
 import { store } from "../stores/store";
+import { Progress } from "../models/progress";
 
 axios.defaults.baseURL = 'http://localhost:8000/api/v1';
 
@@ -19,6 +20,10 @@ const requests = {
     del: <T> (url: string) => axios.delete<T>(url).then(responseBody)
 }
 
+const UserProgress = {
+    list: () => requests.get<Progress[]>('/progress')
+}
+
 const Account = {
     current: () => requests.get<User>('/account/information'),
     login:(user: UserFormValues) => requests.post<User>('/account/authenticate', user),
@@ -26,6 +31,7 @@ const Account = {
 }
 
 const agent = {
+    UserProgress,
     Account
 }
 

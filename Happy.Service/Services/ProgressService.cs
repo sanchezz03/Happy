@@ -8,17 +8,25 @@ namespace Happy.Service.Services;
 public class ProgressService : IProgressService
 {
     private readonly IProgressDataProvider _progressDataProvider;
+    private readonly IExerciseDataProvider _exerciseDataProvider;
 
-    public ProgressService(IProgressDataProvider progressDataProvider)
+    public ProgressService(IProgressDataProvider progressDataProvider, IExerciseDataProvider exerciseDataProvider)
     {
         _progressDataProvider = progressDataProvider;
+        _exerciseDataProvider = exerciseDataProvider;
     }
 
     #region Public methods
 
-    public async Task<ProgressDto> CreateAsync(ModificationProgressDto modificationProgressDto)
+    public async Task<ProgressDto> CreateAsync(string userId,ModificationProgressDto modificationProgressDto)
     {
-        return await _progressDataProvider.CreateAsync(modificationProgressDto);
+        var exerciseDto = await _exerciseDataProvider.GetByNameAsync(modificationProgressDto.ExerciseName);
+        if (exerciseDto == null)
+        {
+            return new ProgressDto();
+        }
+
+        return await _progressDataProvider.CreateAsync(userId, exerciseDto.Id, modificationProgressDto);
     }
 
     public async Task<IEnumerable<ProgressDto>> GetListAsync(string userId)

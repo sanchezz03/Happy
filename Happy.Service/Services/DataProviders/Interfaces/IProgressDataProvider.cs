@@ -5,7 +5,7 @@ namespace Happy.Service.Services.DataProviders.Interfaces;
 
 public interface IProgressDataProvider
 {
-    Task<ProgressDto> CreateAsync(ModificationProgressDto progressDto);
+    Task<ProgressDto> CreateAsync(string userId, long exerciseId, ModificationProgressDto progressDto);
     Task<IEnumerable<ProgressDto>> GetListAsync(string userId);
     Task UpdateAsync(long id, ModificationProgressDto progressDto);
     Task DeleteByIdAsync(long id);

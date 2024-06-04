@@ -31,6 +31,22 @@ public class ExerciseController : ControllerBase
         }
     }
 
+    [HttpGet]
+    [SwaggerResponse(200, "Exercise", typeof(List<ExerciseDto>))]
+    public async Task<IActionResult> GetList()
+    {
+        try
+        {
+            var exerciseDtos = await _exerciseService.GetListAsync();
+
+            return Ok(exerciseDtos);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
     [HttpGet("{exerciseName}")]
     [SwaggerResponse(200, "Exercise", typeof(ExerciseDto))]
     public async Task<IActionResult> Get(string exerciseName)

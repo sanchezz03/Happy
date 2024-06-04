@@ -21,7 +21,7 @@ public class WeekController : ControllerBase
     {
         try
         {
-            var week = await _weekDataProvider.GetByWeekNumber(weekNumber);
+            var week = await _weekDataProvider.GetByWeekNumberAsync(weekNumber);
 
             if (week == null)
             {

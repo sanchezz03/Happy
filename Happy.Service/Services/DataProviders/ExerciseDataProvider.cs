@@ -30,6 +30,13 @@ public class ExerciseDataProvider : IExerciseDataProvider
         return _mapper.Map<ExerciseDto>(response);
     }
 
+    public async Task<List<ExerciseDto>> GetListAsync()
+    {
+        var entities = await _exerciseRepository.GetListAsync();
+
+        return _mapper.Map<List<ExerciseDto>>(entities);    
+    }
+
     public async Task<ExerciseDto> GetByNameAsync(string name)
     {
         var entity = await _exerciseRepository.GetByExerciseNameAsync(name);

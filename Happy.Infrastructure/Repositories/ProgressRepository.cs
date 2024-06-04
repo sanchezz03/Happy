@@ -12,6 +12,14 @@ public class ProgressRepository : BaseRelationalRepository<Progress>
         
     }
 
+    public async Task<Progress> GetByIdAsync(long id)
+    {
+        var specification = new ProgressByIdSpecification(id);
+        var entities = await FindBySpecificationAsync(specification);
+        var entity = entities.FirstOrDefault(x => x.Id == id);
+        return entity;
+    }
+
     public async Task<IEnumerable<Progress>> GetListByUserId(string userId)
     {
         var specification = new ProgressesByUserIdSpecification(userId);

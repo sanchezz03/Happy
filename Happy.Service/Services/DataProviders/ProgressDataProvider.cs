@@ -21,13 +21,16 @@ public class ProgressDataProvider : IProgressDataProvider
 
     #region Public methods
 
-    public async Task<ProgressDto> CreateAsync(ModificationProgressDto modificationProgressDto)
+    public async Task<ProgressDto> CreateAsync(string userId, long exerciseId, ModificationProgressDto modificationProgressDto)
     {
         var entity = _mapper.Map<Progress>(modificationProgressDto);
 
+        entity.ExerciseId = exerciseId;
+        entity.UserId = userId;
+
         var id = await _progressRepository.AddAsync(entity);
 
-        var response = await _progressRepository.GetAsync(id);
+        var response = await _progressRepository.GetByIdAsync(id);
 
         return _mapper.Map<ProgressDto>(response);  
     }

@@ -25,7 +25,8 @@ public class ProgressController : BaseController
     {
         try
         {
-            var progressDto = await _progressService.CreateAsync(request);
+            var user = await GetCurrentUserAsync();
+            var progressDto = await _progressService.CreateAsync(user.Id, request);
         
             return Ok(progressDto);
         }

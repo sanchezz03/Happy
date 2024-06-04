@@ -57,7 +57,7 @@ public class TrainingRecommendationService : ITrainingRecommendationService
         {
             Weight = p.Weight ?? 0,
             NumberOfRepetitions = p.NumberOfRepetitions,
-            RateOfPerceivedExertion = (float)(p.RateOfPerceivedExertion ?? 0),
+            RateOfPerceivedExertion = (float)(p.GetRateOfPerceivedExertion(p.RateOfPerceivedExertion)),
             Day = (float)(p.Date - progressDtos.Min(d => d.Date)).TotalDays
         }).ToList();
     }

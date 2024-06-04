@@ -20,6 +20,11 @@ public class ExerciseService : IExerciseService
         return await _exerciseDataProvider.CreateAsync(exerciseDto);
     }
 
+    public async Task<List<ExerciseDto>> GetListAsync()
+    {
+        return await _exerciseDataProvider.GetListAsync();
+    }
+
     public async Task<ExerciseDto> GetAsync(string name)
     {
         return await _exerciseDataProvider.GetByNameAsync(name);

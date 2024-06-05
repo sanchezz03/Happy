@@ -3,6 +3,7 @@ import { User, UserFormValues } from "../models/user";
 import { store } from "../stores/store";
 import { Progress } from "../models/progress";
 import { Exercise, ExerciseFormValues } from "../models/exercise";
+import { Week } from "../models/week";
 
 axios.defaults.baseURL = 'http://localhost:8000/api/v1';
 
@@ -19,6 +20,10 @@ const requests = {
     post: <T> (url: string, body: {}) => axios.post<T>(url, body).then(responseBody),
     put: <T> (url: string, body: {}) => axios.put<T>(url, body).then(responseBody),
     del: <T> (url: string) => axios.delete<T>(url).then(responseBody)
+}
+
+const Weeks = {
+    get: (weekNumber: number) => requests.get<Week>(`/week/${weekNumber}`)
 }
 
 const Exercises = {
@@ -40,6 +45,7 @@ const Account = {
 }
 
 const agent = {
+    Weeks,
     Exercises,
     UserProgress,
     Account

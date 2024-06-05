@@ -4,9 +4,11 @@ import CommonStore from "./commonStore";
 import ModalStore from "./modalStore";
 import ProgressStore from "./progressStore";
 import ExerciseStore from "./exerciseStore";
+import WeekStore from "./weekStore";
 
 interface Store{
     commonStore: CommonStore;
+    weekStore: WeekStore;
     exerciseStore: ExerciseStore;
     progressStore: ProgressStore;
     userStore: UserStore;
@@ -15,6 +17,7 @@ interface Store{
 
 export const store: Store = {
     commonStore: new CommonStore(),
+    weekStore: new WeekStore(),
     exerciseStore: new ExerciseStore(),
     progressStore: new ProgressStore(),
     userStore: new UserStore(),

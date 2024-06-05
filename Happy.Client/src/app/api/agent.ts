@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from "axios"
 import { User, UserFormValues } from "../models/user";
 import { store } from "../stores/store";
 import { Progress } from "../models/progress";
+import { Exercise, ExerciseFormValues } from "../models/exercise";
 
 axios.defaults.baseURL = 'http://localhost:8000/api/v1';
 
@@ -20,6 +21,14 @@ const requests = {
     del: <T> (url: string) => axios.delete<T>(url).then(responseBody)
 }
 
+const Exercises = {
+    list: () => requests.get<Exercise[]>('/exercise'),
+    get: (exersiceName: string) => requests.get<Exercise>('/exercise'),
+    create: (exercise: ExerciseFormValues) => requests.post<void>('/exercise',exercise),
+    update: (id: number, exercise: ExerciseFormValues) => requests.put<void>(`/exercise/${id}`, exercise),
+    delete: (id: number) => requests.del<void>(`/exercise/${id}`)
+}
+
 const UserProgress = {
     list: () => requests.get<Progress[]>('/progress')
 }
@@ -31,6 +40,7 @@ const Account = {
 }
 
 const agent = {
+    Exercises,
     UserProgress,
     Account
 }

@@ -3,9 +3,11 @@ import UserStore from "./userStore";
 import CommonStore from "./commonStore";
 import ModalStore from "./modalStore";
 import ProgressStore from "./progressStore";
+import ExerciseStore from "./exerciseStore";
 
 interface Store{
     commonStore: CommonStore;
+    exerciseStore: ExerciseStore;
     progressStore: ProgressStore;
     userStore: UserStore;
     modalStore: ModalStore;
@@ -13,6 +15,7 @@ interface Store{
 
 export const store: Store = {
     commonStore: new CommonStore(),
+    exerciseStore: new ExerciseStore(),
     progressStore: new ProgressStore(),
     userStore: new UserStore(),
     modalStore: new ModalStore()

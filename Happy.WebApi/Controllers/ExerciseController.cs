@@ -63,7 +63,7 @@ public class ExerciseController : ControllerBase
         }
     }
 
-    [HttpPut]
+    [HttpPut("{id}")]
     public async Task<IActionResult> Update(long id,[FromBody] ExerciseDto request)
     {
         try
@@ -78,7 +78,7 @@ public class ExerciseController : ControllerBase
         }
     }
 
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(long id)
     {
         try

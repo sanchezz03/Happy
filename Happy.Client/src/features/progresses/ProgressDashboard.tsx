@@ -2,8 +2,8 @@ import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 import { useStore } from "../../app/stores/store";
 import { Table } from "semantic-ui-react";
-import { format } from "date-fns";
 import ProgressTableHeader from "./ProgressHeader";
+import ProgressList from "./ProgressList";
 
 export default observer(function ProgressDashboard() {
    const {progressStore} = useStore();
@@ -16,17 +16,7 @@ export default observer(function ProgressDashboard() {
     return (
         <Table celled>
         <ProgressTableHeader/>
-        <Table.Body>
-          {progress.map((progress) => (
-            <Table.Row key={progress.id}>
-              <Table.Cell>{progress.weight}</Table.Cell>
-              <Table.Cell>{progress.numberOfRepetitions}</Table.Cell>
-              <Table.Cell>{format (progress.date!, 'dd MMM yyyy h:mm aa')}</Table.Cell>
-              <Table.Cell>{progress.rateOfPerceivedExertion!}</Table.Cell>
-              <Table.Cell>{progress.exerciseName}</Table.Cell>
-            </Table.Row>
-          ))}
-        </Table.Body>
+        <ProgressList progress={progress}/>
       </Table>
     )
 })
